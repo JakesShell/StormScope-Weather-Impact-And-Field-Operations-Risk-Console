@@ -1,0 +1,115 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Impact Operations Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="hero">
+        <div class="hero-inner">
+            <p class="eyebrow">Operations Weather Dashboard</p>
+            <h1>Weather Impact Operations Dashboard</h1>
+            <p class="hero-text">
+                Browser-based planning dashboard for reviewing weather conditions, tracking operational risk, and helping teams prepare work schedules, site activity, and travel plans.
+            </p>
+            <div class="hero-actions">
+                <button onclick="scrollToSection('overview')">View Overview</button>
+                <button onclick="scrollToSection('forecast')">View Forecast</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="page-shell">
+        <section class="panel" id="overview">
+            <div class="panel-header">
+                <div>
+                    <h2>Operational Weather Overview</h2>
+                    <p class="panel-subtext">Select a location to review weather conditions and recommended planning actions.</p>
+                </div>
+                <select id="citySelect">
+                    <option value="Phnom Penh">Phnom Penh</option>
+                    <option value="Shanghai">Shanghai</option>
+                    <option value="Cape Town">Cape Town</option>
+                    <option value="Seattle">Seattle</option>
+                </select>
+            </div>
+
+            <div class="metric-grid">
+                <article class="metric-card">
+                    <h3>Temperature</h3>
+                    <p id="temperatureValue">--</p>
+                </article>
+                <article class="metric-card">
+                    <h3>Humidity</h3>
+                    <p id="humidityValue">--</p>
+                </article>
+                <article class="metric-card">
+                    <h3>Conditions</h3>
+                    <p id="conditionValue">--</p>
+                </article>
+                <article class="metric-card">
+                    <h3>Operations Risk</h3>
+                    <p id="riskValue">--</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="panel">
+            <h2>Planning Guidance</h2>
+            <div class="card-grid">
+                <article class="card">
+                    <h3>Recommended Action</h3>
+                    <p id="actionText">--</p>
+                </article>
+                <article class="card">
+                    <h3>Field Team Guidance</h3>
+                    <p id="fieldText">--</p>
+                </article>
+                <article class="card">
+                    <h3>Travel Advisory</h3>
+                    <p id="travelText">--</p>
+                </article>
+                <article class="card">
+                    <h3>Schedule Impact</h3>
+                    <p id="scheduleText">--</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="panel" id="forecast">
+            <h2>Short-Term Forecast Window</h2>
+            <div id="forecastGrid" class="forecast-grid"></div>
+        </section>
+
+        <section class="panel">
+            <h2>Operational Use Cases</h2>
+            <div class="card-grid">
+                <article class="card">
+                    <h3>Field Operations</h3>
+                    <p>Use weather signals to prepare staffing, equipment, and outdoor work plans.</p>
+                </article>
+                <article class="card">
+                    <h3>Travel Coordination</h3>
+                    <p>Review local conditions before site visits, deliveries, or team movement.</p>
+                </article>
+                <article class="card">
+                    <h3>Site Readiness</h3>
+                    <p>Monitor heat, rain, wind, or storm conditions that could affect execution.</p>
+                </article>
+                <article class="card">
+                    <h3>Manager Visibility</h3>
+                    <p>Give internal stakeholders a cleaner view of local weather impact and planning risk.</p>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>Weather Impact Operations Dashboard • Portfolio Project</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
