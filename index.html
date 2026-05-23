@@ -1,115 +1,195 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weather Impact Operations Dashboard</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>StormScope | Weather Impact Operations Dashboard</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-    <header class="hero">
-        <div class="hero-inner">
-            <p class="eyebrow">Operations Weather Dashboard</p>
-            <h1>Weather Impact Operations Dashboard</h1>
-            <p class="hero-text">
-                Browser-based planning dashboard for reviewing weather conditions, tracking operational risk, and helping teams prepare work schedules, site activity, and travel plans.
-            </p>
-            <div class="hero-actions">
-                <button onclick="scrollToSection('overview')">View Overview</button>
-                <button onclick="scrollToSection('forecast')">View Forecast</button>
-            </div>
+  <div class="weather-background"></div>
+
+  <header class="topbar">
+    <div class="brand-block">
+      <div class="brand-title">StormScope</div>
+      <div class="brand-subtitle">Weather Impact Operations Dashboard</div>
+    </div>
+
+    <nav class="topnav">
+      <a href="#overview">Overview</a>
+      <a href="#forecast">Forecast</a>
+      <a href="#guidance">Guidance</a>
+      <a href="#actions">Actions</a>
+    </nav>
+  </header>
+
+  <main class="app-shell">
+    <div class="dashboard-grid">
+      <aside class="panel panel-dark sidebar">
+        <div class="eyebrow">OPERATIONS WEATHER STATION</div>
+        <h1 class="sidebar-title">Weather impact planner</h1>
+        <p class="sidebar-copy">
+          Monitor conditions, field exposure, timing windows, and operational risk
+          from one lightweight console.
+        </p>
+
+        <div class="sidebar-stack">
+          <div class="mini-card">
+            <div class="mini-label">Active region</div>
+            <div class="mini-value" id="activeRegion">Phnom Penh</div>
+            <div class="mini-meta">Live regional snapshot</div>
+          </div>
+
+          <div class="mini-card">
+            <div class="mini-label">Readiness posture</div>
+            <div class="mini-value" id="readinessPosture">Watch operations</div>
+            <div class="mini-meta">Update field timing and dispatch windows</div>
+          </div>
+
+          <div class="mini-card">
+            <div class="mini-label">Best use</div>
+            <div class="mini-value">Field, travel, and site teams</div>
+            <div class="mini-meta">Demo-only portfolio dashboard</div>
+          </div>
         </div>
-    </header>
+      </aside>
 
-    <main class="page-shell">
-        <section class="panel" id="overview">
-            <div class="panel-header">
-                <div>
-                    <h2>Operational Weather Overview</h2>
-                    <p class="panel-subtext">Select a location to review weather conditions and recommended planning actions.</p>
-                </div>
-                <select id="citySelect">
-                    <option value="Phnom Penh">Phnom Penh</option>
-                    <option value="Shanghai">Shanghai</option>
-                    <option value="Cape Town">Cape Town</option>
-                    <option value="Seattle">Seattle</option>
+      <section class="workspace">
+        <section class="panel hero-card" id="overview">
+          <div class="hero-header">
+            <div>
+              <div class="eyebrow">LIVE WEATHER COMMAND</div>
+              <h2 class="hero-title">
+                Weather-aware operational planning without guesswork.
+              </h2>
+              <p class="hero-copy">
+                Review forecast conditions, identify exposure windows, and guide teams
+                toward safer, smarter operating decisions.
+              </p>
+            </div>
+
+            <div class="hero-controls">
+              <label class="control-group">
+                <span>Location</span>
+                <select id="locationSelect">
+                  <option value="phnom_penh">Phnom Penh</option>
+                  <option value="singapore">Singapore</option>
+                  <option value="bangkok">Bangkok</option>
+                  <option value="jakarta">Jakarta</option>
                 </select>
+              </label>
+            </div>
+          </div>
+
+          <div class="metric-grid">
+            <div class="metric-card">
+              <div class="metric-label">Temperature</div>
+              <div class="metric-value" id="temperatureValue">33°C</div>
+              <div class="metric-meta">Current surface reading</div>
             </div>
 
-            <div class="metric-grid">
-                <article class="metric-card">
-                    <h3>Temperature</h3>
-                    <p id="temperatureValue">--</p>
-                </article>
-                <article class="metric-card">
-                    <h3>Humidity</h3>
-                    <p id="humidityValue">--</p>
-                </article>
-                <article class="metric-card">
-                    <h3>Conditions</h3>
-                    <p id="conditionValue">--</p>
-                </article>
-                <article class="metric-card">
-                    <h3>Operations Risk</h3>
-                    <p id="riskValue">--</p>
-                </article>
+            <div class="metric-card">
+              <div class="metric-label">Humidity</div>
+              <div class="metric-value" id="humidityValue">72%</div>
+              <div class="metric-meta">Moisture level</div>
             </div>
-        </section>
 
-        <section class="panel">
-            <h2>Planning Guidance</h2>
-            <div class="card-grid">
-                <article class="card">
-                    <h3>Recommended Action</h3>
-                    <p id="actionText">--</p>
-                </article>
-                <article class="card">
-                    <h3>Field Team Guidance</h3>
-                    <p id="fieldText">--</p>
-                </article>
-                <article class="card">
-                    <h3>Travel Advisory</h3>
-                    <p id="travelText">--</p>
-                </article>
-                <article class="card">
-                    <h3>Schedule Impact</h3>
-                    <p id="scheduleText">--</p>
-                </article>
+            <div class="metric-card">
+              <div class="metric-label">Conditions</div>
+              <div class="metric-value metric-value-small" id="conditionsValue">Hot with isolated rain</div>
+              <div class="metric-meta">Observed condition set</div>
             </div>
-        </section>
 
-        <section class="panel" id="forecast">
-            <h2>Short-Term Forecast Window</h2>
-            <div id="forecastGrid" class="forecast-grid"></div>
-        </section>
-
-        <section class="panel">
-            <h2>Operational Use Cases</h2>
-            <div class="card-grid">
-                <article class="card">
-                    <h3>Field Operations</h3>
-                    <p>Use weather signals to prepare staffing, equipment, and outdoor work plans.</p>
-                </article>
-                <article class="card">
-                    <h3>Travel Coordination</h3>
-                    <p>Review local conditions before site visits, deliveries, or team movement.</p>
-                </article>
-                <article class="card">
-                    <h3>Site Readiness</h3>
-                    <p>Monitor heat, rain, wind, or storm conditions that could affect execution.</p>
-                </article>
-                <article class="card">
-                    <h3>Manager Visibility</h3>
-                    <p>Give internal stakeholders a cleaner view of local weather impact and planning risk.</p>
-                </article>
+            <div class="metric-card">
+              <div class="metric-label">Operations Risk</div>
+              <div class="metric-value" id="riskValue">Medium</div>
+              <div class="metric-meta">Operational impact estimate</div>
             </div>
+          </div>
         </section>
-    </main>
 
-    <footer class="footer">
-        <p>Weather Impact Operations Dashboard • Portfolio Project</p>
-    </footer>
+        <div class="workspace-subgrid">
+          <section class="panel content-card" id="guidance">
+            <div class="section-header">
+              <div>
+                <div class="eyebrow">PLANNING GUIDANCE</div>
+                <h3>Recommended actions</h3>
+              </div>
+            </div>
+            <div class="card-grid four-up" id="guidanceGrid"></div>
+          </section>
 
-    <script src="script.js"></script>
+          <section class="panel content-card" id="forecast">
+            <div class="section-header">
+              <div>
+                <div class="eyebrow">FORECAST WINDOW</div>
+                <h3>Short-term outlook</h3>
+              </div>
+            </div>
+            <div class="card-grid four-up" id="forecastGrid"></div>
+          </section>
+
+          <section class="panel content-card">
+            <div class="section-header">
+              <div>
+                <div class="eyebrow">OPERATIONAL USE CASES</div>
+                <h3>Where the dashboard helps</h3>
+              </div>
+            </div>
+            <div class="card-grid four-up" id="useCaseGrid"></div>
+          </section>
+        </div>
+      </section>
+
+      <aside class="panel summary-panel" id="actions">
+        <div class="eyebrow">SCENARIO SUMMARY</div>
+        <h2 class="summary-title" id="summaryState">Watchlist</h2>
+        <p class="summary-copy" id="summaryCopy">
+          Review timing, hydration, and route flexibility before dispatching field teams.
+        </p>
+
+        <div class="risk-band-wrap">
+          <div class="risk-band">
+            <div class="risk-band-fill" id="riskBandFill"></div>
+          </div>
+          <div class="risk-band-label" id="riskBandLabel">Medium risk profile</div>
+        </div>
+
+        <button class="action-btn action-btn-primary">Rerun Scenario</button>
+        <button class="action-btn action-btn-secondary">Reset Inputs</button>
+
+        <div class="callout">
+          Prototype only. This does not connect to live weather services or process real incident data.
+        </div>
+
+        <div class="side-list">
+          <div class="side-list-title">Next actions</div>
+          <ul id="actionsList"></ul>
+        </div>
+      </aside>
+    </div>
+
+    <section class="bottom-bar">
+      <div class="bottom-bar-card">
+        <div class="eyebrow">TEAM MODE</div>
+        <div class="bottom-title">Field operations</div>
+        <div class="bottom-copy">Use safer timing windows and limit midday exposure.</div>
+      </div>
+
+      <div class="bottom-bar-card">
+        <div class="eyebrow">MOBILITY MODE</div>
+        <div class="bottom-title">Travel coordination</div>
+        <div class="bottom-copy">Avoid heavy rain windows and preserve delivery reliability.</div>
+      </div>
+
+      <div class="bottom-bar-card">
+        <div class="eyebrow">SITE MODE</div>
+        <div class="bottom-title">Outdoor scheduling</div>
+        <div class="bottom-copy">Shift non-urgent work when heat or storm risk increases.</div>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
 </body>
 </html>
