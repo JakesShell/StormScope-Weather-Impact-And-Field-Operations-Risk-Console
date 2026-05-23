@@ -58,3 +58,4 @@ Open the dashboard in a browser.
 
 ```powershell
 Start-Process .\index.html
+
